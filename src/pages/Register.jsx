@@ -13,7 +13,7 @@ function Register(){
          const navigate = useNavigate()
     const   handleRegisterUser = (e)=>{
          e.preventDefault()
-         axios.post("http://localhost:1080/register/user",{
+         axios.post("https://project-backend-last.onrender.com/register/user",{
             "name": name,
             "email":email,
             "password": password

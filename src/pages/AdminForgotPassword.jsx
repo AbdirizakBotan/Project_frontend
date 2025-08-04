@@ -16,7 +16,7 @@ function AdminForgotPassword() {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:1080/api/admin/forgot-password', {
+      const res = await axios.post('https://project-backend-last.onrender.com/api/admin/forgot-password', {
         email: email
       });
       

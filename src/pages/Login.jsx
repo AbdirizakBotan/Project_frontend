@@ -13,7 +13,7 @@ function Login(){
     const navigate = useNavigate()
     const loginUser = (e)=>{
         e.preventDefault()
-        axios.post("http://localhost:1080/login/user",{
+        axios.post("https://project-backend-last.onrender.com/login/user",{
             "email": email,
             "password": password
         }).then((res)=>{

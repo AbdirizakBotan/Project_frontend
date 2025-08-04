@@ -37,7 +37,7 @@ function Reports() {
   const [rejected, setRejected] = useState(0);
 
   useEffect(() => {
-    axios.get('http://localhost:1080/type-counts')
+    axios.get('https://project-backend-last.onrender.com/type-counts')
       .then(res => {
         setTypeCounts(res.data.approvedByType);
         setRejected(res.data.rejected);

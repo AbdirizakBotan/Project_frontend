@@ -14,7 +14,7 @@ function UserForgotPassword() {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:1080/forgot-password', {
+      const res = await axios.post('https://project-backend-last.onrender.com/forgot-password', {
         email: email
       });
       

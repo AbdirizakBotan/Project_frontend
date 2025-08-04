@@ -43,7 +43,7 @@ function AdminResetPassword() {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:1080/api/admin/reset-password', {
+      const res = await axios.post('https://project-backend-last.onrender.com/api/admin/reset-password', {
         token: token,
         password: password
       });

@@ -49,7 +49,7 @@ function Business(){
 
     const handleConfirm = async () => {
         try {
-            const res = await axios.post('http://localhost:1080/register', registrationData);
+            const res = await axios.post('https://project-backend-last.onrender.com/register', registrationData);
             toast.success('Business registered successfully!', { position: 'top-center', autoClose: 3000 });
             setForm({ businessName: '', address: '', ownerName: '', email: '', businessType: '' });
             setTimeout(() => navigate('/'), 2000);

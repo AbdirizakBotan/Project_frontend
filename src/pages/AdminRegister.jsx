@@ -33,7 +33,7 @@ function AdminRegister() {
     }
 
     try {
-      const res = await axios.post('http://localhost:1080/api/admin/register', {
+      const res = await axios.post('https://project-backend-last.onrender.com/api/admin/register', {
         username: form.username,
         email: form.email,
         password: form.password

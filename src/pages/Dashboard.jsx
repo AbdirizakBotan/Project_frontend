@@ -24,7 +24,7 @@ const cardLabels = [
 function Dashboard() {
   const [counts, setCounts] = useState({ total: 0, approved: 0, pending: 0 });
   useEffect(() => {
-    axios.get('http://localhost:1080/counts')
+    axios.get('https://project-backend-last.onrender.com/counts')
       .then(res => setCounts(res.data))
       .catch(() => setCounts({ total: 0, approved: 0, pending: 0 }));
   }, []);

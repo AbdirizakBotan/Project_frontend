@@ -41,7 +41,7 @@ function ResetPassword() {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:1080/reset-password', {
+      const res = await axios.post('https://project-backend-last.onrender.com/reset-password', {
         token: token,
         password: password
       });

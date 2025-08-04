@@ -21,7 +21,7 @@ function BusinessRecords() {
 
   const fetchApproved = async () => {
     try {
-      const res = await axios.get('http://localhost:1080/approved');
+      const res = await axios.get('https://project-backend-last.onrender.com/approved');
       setBusinesses(res.data);
       setError(null);
     } catch (err) {
@@ -35,7 +35,7 @@ function BusinessRecords() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:1080/delete/${id}`);
+      await axios.delete(`https://project-backend-last.onrender.com/delete/${id}`);
       fetchApproved();
       toast.success('Business deleted successfully!', { position: 'top-center', autoClose: 2000 });
     } catch (err) {
@@ -60,7 +60,7 @@ function BusinessRecords() {
 
   const handleUpdate = async (id) => {
     try {
-      await axios.patch(`http://localhost:1080/update/${id}`, editForm);
+      await axios.patch(`https://project-backend-last.onrender.com/update/${id}`, editForm);
       setEditId(null);
       fetchApproved();
       toast.success('Business updated successfully!', { position: 'top-center', autoClose: 2000 });
@@ -80,7 +80,7 @@ function BusinessRecords() {
     setSearching(true);
     setSearchModalOpen(true);
     try {
-      const res = await axios.get(`http://localhost:1080/search?q=${encodeURIComponent(query)}`);
+      const res = await axios.get(`https://project-backend-last.onrender.com/search?q=${encodeURIComponent(query)}`);
       setSearchResults(res.data);
     } catch {
       setSearchResults([]);

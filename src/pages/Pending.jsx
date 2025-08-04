@@ -14,7 +14,7 @@ function Pending() {
 
   const fetchPending = async () => {
     try {
-      const res = await axios.get('http://localhost:1080/pending');
+      const res = await axios.get('https://project-backend-last.onrender.com/pending');
       setBusinesses(res.data);
       setError(null);
     } catch (err) {
@@ -28,7 +28,7 @@ function Pending() {
 
   const handleAction = async (id, action) => {
     try {
-      await axios.patch(`http://localhost:1080/${action}/${id}`);
+      await axios.patch(`https://project-backend-last.onrender.com/${action}/${id}`);
       fetchPending();
       toast.success(`Business ${action === 'approve' ? 'approved' : 'rejected'} successfully!`, { position: 'top-center', autoClose: 2000 });
     } catch (err) {
