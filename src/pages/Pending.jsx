@@ -28,10 +28,50 @@ function Pending() {
 
   const handleAction = async (id, action) => {
     try {
+      // First, update the business status in the backend
       await axios.patch(`https://project-backend-last.onrender.com/${action}/${id}`);
+      
+      // Find the business data to send email
+      const businessToUpdate = businesses.find(business => business._id === id);
+      
+      if (businessToUpdate) {
+        // Send email through backend API
+        try {
+          const emailResponse = await axios.post('http://localhost:5000/send-email', {
+            businessData: businessToUpdate,
+            action: action
+          });
+          
+          if (emailResponse.data.success) {
+            toast.success(`Business ${action === 'approve' ? 'approved' : 'rejected'} and email sent successfully!`, { 
+              position: 'top-center', 
+              autoClose: 3000 
+            });
+          } else {
+            toast.warning(`Business ${action === 'approve' ? 'approved' : 'rejected'} but email sending failed`, { 
+              position: 'top-center', 
+              autoClose: 3000 
+            });
+          }
+        } catch (emailError) {
+          console.error('Email sending error:', emailError);
+          toast.warning(`Business ${action === 'approve' ? 'approved' : 'rejected'} but email sending failed`, { 
+            position: 'top-center', 
+            autoClose: 3000 
+          });
+        }
+      } else {
+        toast.success(`Business ${action === 'approve' ? 'approved' : 'rejected'} successfully!`, { 
+          position: 'top-center', 
+          autoClose: 2000 
+        });
+      }
+      
+      // Refresh the pending businesses list
       fetchPending();
-      toast.success(`Business ${action === 'approve' ? 'approved' : 'rejected'} successfully!`, { position: 'top-center', autoClose: 2000 });
+      
     } catch (err) {
+      console.error('Error in handleAction:', err);
       setError('Action failed');
       toast.error('Action failed', { position: 'top-center', autoClose: 2000 });
     }
